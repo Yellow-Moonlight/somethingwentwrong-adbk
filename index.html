@@ -22,22 +22,6 @@
 
 
 <body>
-
-  <style>
-
-  @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
-
-  </style>
-  <p style="font-family: -윤고딕350; font-size: 3.7em; color: white; position: fixed; left:2%; top:5%; ">Sorry.</p>
-  <p style="font-family: -윤고딕350; font-size: 3.7em; color: white; position: fixed; left:2%; top:18%; ">You can't watch the video yet</p>
-  <p style="font-family: -윤고딕350; font-size: 3.7em; color: white; position: fixed; left:2%; top:31%; ">because the encodig has not been completed.</p>
-  <p style="font-family: -윤고딕350; font-size: 3.7em; color: white; position: fixed; left:2%; top:45%; ">Encoding will be finished after</p>
-  <div id="remaint2" style="color:white; font-size: 3.7em; font-family: -윤고딕350; position: fixed; left:2%; top:65%; "></div>
-
-
-
-
-
   <img id="over" src="" style = "width: 500px;" class = "absolute">
   <img id="barL" src="" style ="">
   <img id="barS" src="" style ="">
@@ -45,7 +29,6 @@
   <div id ="percent" style="color:#808080; font-size: 0.7em; font-family: myraid pro; position: fixed; left:90%; top:17.35%; "></div>
   <div id="overt" style="color:#808080; font-size: 0.7em; font-family: myraid pro; position: fixed; left:39.3%; top:84.55%;"></div>
   <div id="remaint" style="color:#808080; font-size: 0.7em; font-family: myraid pro; position: fixed; left:94.7%; top:84.55%;"></div>
-
   <div class = "barL3">
     <div class = "loading"></div>
   </div>
@@ -58,9 +41,9 @@
 
   <script>
 
-  CountDownTimer('12/25/2000 09:00 AM', '12/25/3000 5:00 PM', 'percent', 'endimage', 'overt', 'remaint', 'remaint2');
+  CountDownTimer('2/1/2024 09:00 AM', '9/30/2024 5:00 PM', 'percent', 'endimage', 'overt', 'remaint');
 
-  function CountDownTimer(dt1, dt2, id1, id2, id3, id4, id5){
+  function CountDownTimer(dt1, dt2, id1, id2, id3, id4){
     var start = new Date(dt1);
 
     var _second1 = 1000;
@@ -88,11 +71,11 @@
       var distance3 = now - start;
 
 
-      //var days1 = Math.floor(distance1 / _day1);
-    //  var hours1 = Math.floor((distance1 % _day1) / _hour1);
-      //var minutes1 = Math.floor((distance1 % _hour1) / _minute1);
-      //var seconds1 = Math.floor((distance1 % _minute1) / _second1);
-      //var total1 = seconds1 + minutes1*60 + hours1*3600 + days1*3600*24;
+      var days1 = Math.floor(distance1 / _day1);
+      var hours1 = Math.floor((distance1 % _day1) / _hour1);
+      var minutes1 = Math.floor((distance1 % _hour1) / _minute1);
+      var seconds1 = Math.floor((distance1 % _minute1) / _second1);
+      var total1 = seconds1 + minutes1*60 + hours1*3600 + days1*3600*24;
 
       var days2 = Math.floor(distance2 / _day2);
       var hours2 = Math.floor((distance2 % _day2) / _hour2);
@@ -104,10 +87,10 @@
       var hours3 = Math.floor((distance3 % _day1) / _hour1);
       var minutes3 = Math.floor((distance3 % _hour1) / _minute1);
       var seconds3 = Math.floor((distance3 % _minute1) / _second1);
-      var total3 = seconds3 + minutes3*60 + hours3*3600 + days3*3600*24 + 63072000000;
+      var total3 = seconds3 + minutes3*60 + hours3*3600 + days3*3600*24;
 
       var per2 = Math.floor(total3 / (total2+total3) *100);
-      //var per1 = (total3 / (total2+total3) *100).toFixed(5);
+      var per1 = (total3 / (total2+total3) *100).toFixed(5);
 
 
 
@@ -115,20 +98,15 @@
       if(per2<100){
         document.getElementById(id1).textContent = per2 + '%';
 
-        document.getElementById(id3).textContent = days3+ 2000*365+ 'days ';
+        document.getElementById(id3).textContent = days3 + 'days ';
         document.getElementById(id3).textContent += hours3 + ':';
         document.getElementById(id3).textContent += minutes3 + ':';
         document.getElementById(id3).textContent += seconds3;
 
-        document.getElementById(id4).textContent = days2  + 'days ';
+        document.getElementById(id4).textContent = days2 + 'days ';
         document.getElementById(id4).textContent += hours2 + ':';
         document.getElementById(id4).textContent += minutes2 + ':';
         document.getElementById(id4).textContent += seconds2;
-
-        document.getElementById(id5).textContent =  days2  + 'days ';
-        document.getElementById(id5).textContent += hours2 + 'hours ';
-        document.getElementById(id5).textContent += minutes2 + 'minutes ';
-        document.getElementById(id5).textContent += seconds2 + 'seconds';
 
 
         if(per2<1){
